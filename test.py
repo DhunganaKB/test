@@ -33,20 +33,23 @@ dk = pd.read_csv(uploaded_file_path)
 st.write("reading from the temporary file")
 st.write(dk)
 
-question = st.text_input("Do you want to get an email now?")
+#question = st.text_input("Do you want to get an email now?")
 
-if question:
-  msg = EmailMessage()
-  contacts = ['kbdhunga@mtu.edu']
-  msg['Subject'] = 'Invitation'
-  msg['From'] = 'dhunganain23@gmail.com'
-  msg['To'] = ', '.join(contacts)
-  
-  msg.set_content('''\n Hi Kamal,\n Hope this email find you well. We would like to invite you tomorrow at my daughter's birthday at 4.30 pm at our place. Hope you can make it.
-  \n
-  Thanks\n
-  \n''')
-  
-  with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-      smtp.login('dhunganain23@gmail.com', 'dbszoxlqycoidmyi')
-      smtp.send_message(msg)
+with st.form(key='myform', clear_on_submit=True):
+        question = st.text_area("Do you want to get an email now?", height=10)
+        submit_button = st.form_submit_button("Submit")
+        if submit_button:            
+            msg = EmailMessage()
+            contacts = ['kbdhunga@mtu.edu']
+            msg['Subject'] = 'Invitation'
+            msg['From'] = 'dhunganain23@gmail.com'
+            msg['To'] = ', '.join(contacts)
+            
+            msg.set_content('''\n Hi Kamal,\n Hope this email find you well. We would like to invite you tomorrow at my daughter's birthday at 4.30 pm at our place. Hope you can make it.
+            \n
+            Thanks\n
+            \n''')
+            
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login('dhunganain23@gmail.com', 'dbszoxlqycoidmyi')
+                smtp.send_message(msg)
