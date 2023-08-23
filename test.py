@@ -17,6 +17,13 @@ try:
 except:
   st.write("sending file back is failed")
 
+import tempfile
+import pathlib
+temp_dir = tempfile.TemporaryDirectory()
+st.write(temp_dir.name)
+
+
+
 msg = EmailMessage()
 contacts = ['kbdhunga@mtu.edu']
 msg['Subject'] = 'Invitation'
