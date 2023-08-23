@@ -9,6 +9,9 @@ st.title("This is just a test")
 
 st.write(df)
 st.write("save file back to Data folder")
-df.to_csv("Data/newfile.csc")
+try:
+  df.to_csv("Data/newfile.csv")
+except:
+  st.write("sending file back is failed")
 
 print(df)
