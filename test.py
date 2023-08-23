@@ -25,7 +25,13 @@ uploaded_file_name = "newfile.csv"
 uploaded_file_path = pathlib.Path(temp_dir.name) / uploaded_file_name
 st.write(uploaded_file_path)
 
+with open(uploaded_file_path, 'wb') as output_temporary_file:
+    df.to_csv(output_temporary_file)
 
+## Reading the file from temporary folder
+dk = pd.read_csv(uploaded_file_path)
+st.write("reading from the temporary file")
+st.write(dk)
 
 msg = EmailMessage()
 contacts = ['kbdhunga@mtu.edu']
