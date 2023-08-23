@@ -1,5 +1,8 @@
 import streamlit as st
 from read import *
+import yagmail
+from email.message import EmailMessage
+import smtplib
 
 path='Data/tkt.csv'
 
@@ -14,4 +17,17 @@ try:
 except:
   st.write("sending file back is failed")
 
-print(df)
+msg = EmailMessage()
+contacts = ['kbdhunga@mtu.edu']
+msg['Subject'] = 'Invitation'
+msg['From'] = 'dhunganain23@gmail.com'
+msg['To'] = ', '.join(contacts)
+
+msg.set_content('''\n Hi Kamal,\n Hope this email find you well. We would like to invite you tomorrow at my daughter's birthday at 4.30 pm at our place. Hope you can make it.
+\n
+Thanks\n
+\n''')
+
+with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    smtp.login('dhunganain23@gmail.com', 'dbszoxlqycoidmyi')
+    smtp.send_message(msg)
