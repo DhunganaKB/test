@@ -21,6 +21,9 @@ import tempfile
 import pathlib
 temp_dir = tempfile.TemporaryDirectory()
 st.write(temp_dir.name)
+uploaded_file_name = "newfile.csv"
+uploaded_file_path = pathlib.Path(temp_dir.name) / uploaded_file_name
+st.write(uploaded_file_path)
 
 
 
