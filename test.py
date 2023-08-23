@@ -1,7 +1,7 @@
 import streamlit as st
 from read import *
 
-path='tkt.csv'
+path='Data/tkt.csv'
 
 df = read_csv(path)
 
